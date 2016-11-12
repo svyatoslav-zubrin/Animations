@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D471DB41DC790BD009F20BD /* SZUFluidPageAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D471DB31DC790BD009F20BD /* SZUFluidPageAnimationViewController.swift */; };
+		8D471DB71DC7923C009F20BD /* SZUFluidPageAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D471DB61DC7923C009F20BD /* SZUFluidPageAnimationView.swift */; };
 		CE6713131DC3EB5300C2BA82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6713121DC3EB5300C2BA82 /* AppDelegate.swift */; };
-		CE6713151DC3EB5300C2BA82 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6713141DC3EB5300C2BA82 /* ViewController.swift */; };
+		CE6713151DC3EB5300C2BA82 /* SZUAnimationsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6713141DC3EB5300C2BA82 /* SZUAnimationsListViewController.swift */; };
 		CE6713181DC3EB5300C2BA82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE6713161DC3EB5300C2BA82 /* Main.storyboard */; };
 		CE67131A1DC3EB5300C2BA82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE6713191DC3EB5300C2BA82 /* Assets.xcassets */; };
 		CE67131D1DC3EB5300C2BA82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE67131B1DC3EB5300C2BA82 /* LaunchScreen.storyboard */; };
 		CE6713281DC3EB5400C2BA82 /* SZUAnimationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6713271DC3EB5400C2BA82 /* SZUAnimationsTests.swift */; };
 		CE6713331DC3EB5400C2BA82 /* SZUAnimationsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6713321DC3EB5400C2BA82 /* SZUAnimationsUITests.swift */; };
+		CE6713411DC4056A00C2BA82 /* SZUIconAnimationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6713401DC4056A00C2BA82 /* SZUIconAnimationsViewController.swift */; };
+		CE6713451DC4194000C2BA82 /* SZURayAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6713441DC4194000C2BA82 /* SZURayAnimationView.swift */; };
+		CE6713481DC41CD400C2BA82 /* SZUAnimationViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6713471DC41CD400C2BA82 /* SZUAnimationViewInterface.swift */; };
+		CE67134B1DC5EAEE00C2BA82 /* SZURayOvalLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE67134A1DC5EAEE00C2BA82 /* SZURayOvalLayer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +40,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D471DB31DC790BD009F20BD /* SZUFluidPageAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZUFluidPageAnimationViewController.swift; sourceTree = "<group>"; };
+		8D471DB61DC7923C009F20BD /* SZUFluidPageAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZUFluidPageAnimationView.swift; sourceTree = "<group>"; };
 		CE67130F1DC3EB5300C2BA82 /* SZUAnimations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SZUAnimations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6713121DC3EB5300C2BA82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE6713141DC3EB5300C2BA82 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE6713141DC3EB5300C2BA82 /* SZUAnimationsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SZUAnimationsListViewController.swift; sourceTree = "<group>"; };
 		CE6713171DC3EB5300C2BA82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE6713191DC3EB5300C2BA82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE67131C1DC3EB5300C2BA82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +55,10 @@
 		CE67132E1DC3EB5400C2BA82 /* SZUAnimationsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SZUAnimationsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE6713321DC3EB5400C2BA82 /* SZUAnimationsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SZUAnimationsUITests.swift; sourceTree = "<group>"; };
 		CE6713341DC3EB5400C2BA82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE6713401DC4056A00C2BA82 /* SZUIconAnimationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZUIconAnimationsViewController.swift; sourceTree = "<group>"; };
+		CE6713441DC4194000C2BA82 /* SZURayAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZURayAnimationView.swift; sourceTree = "<group>"; };
+		CE6713471DC41CD400C2BA82 /* SZUAnimationViewInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZUAnimationViewInterface.swift; sourceTree = "<group>"; };
+		CE67134A1DC5EAEE00C2BA82 /* SZURayOvalLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZURayOvalLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D471DB51DC7921D009F20BD /* Fluid Page */ = {
+			isa = PBXGroup;
+			children = (
+				8D471DB61DC7923C009F20BD /* SZUFluidPageAnimationView.swift */,
+			);
+			name = "Fluid Page";
+			sourceTree = "<group>";
+		};
 		CE6713061DC3EB5300C2BA82 = {
 			isa = PBXGroup;
 			children = (
@@ -97,8 +117,11 @@
 		CE6713111DC3EB5300C2BA82 /* SZUAnimations */ = {
 			isa = PBXGroup;
 			children = (
+				CE6713421DC4187700C2BA82 /* Animations */,
 				CE6713121DC3EB5300C2BA82 /* AppDelegate.swift */,
-				CE6713141DC3EB5300C2BA82 /* ViewController.swift */,
+				CE6713141DC3EB5300C2BA82 /* SZUAnimationsListViewController.swift */,
+				CE6713401DC4056A00C2BA82 /* SZUIconAnimationsViewController.swift */,
+				8D471DB31DC790BD009F20BD /* SZUFluidPageAnimationViewController.swift */,
 				CE6713161DC3EB5300C2BA82 /* Main.storyboard */,
 				CE6713191DC3EB5300C2BA82 /* Assets.xcassets */,
 				CE67131B1DC3EB5300C2BA82 /* LaunchScreen.storyboard */,
@@ -123,6 +146,33 @@
 				CE6713341DC3EB5400C2BA82 /* Info.plist */,
 			);
 			path = SZUAnimationsUITests;
+			sourceTree = "<group>";
+		};
+		CE6713421DC4187700C2BA82 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				CE6713471DC41CD400C2BA82 /* SZUAnimationViewInterface.swift */,
+				CE6713431DC4188200C2BA82 /* Ray */,
+				8D471DB51DC7921D009F20BD /* Fluid Page */,
+			);
+			name = Animations;
+			sourceTree = "<group>";
+		};
+		CE6713431DC4188200C2BA82 /* Ray */ = {
+			isa = PBXGroup;
+			children = (
+				CE6713491DC5EAD100C2BA82 /* Layers */,
+				CE6713441DC4194000C2BA82 /* SZURayAnimationView.swift */,
+			);
+			name = Ray;
+			sourceTree = "<group>";
+		};
+		CE6713491DC5EAD100C2BA82 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				CE67134A1DC5EAEE00C2BA82 /* SZURayOvalLayer.swift */,
+			);
+			name = Layers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +309,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE6713151DC3EB5300C2BA82 /* ViewController.swift in Sources */,
+				CE6713481DC41CD400C2BA82 /* SZUAnimationViewInterface.swift in Sources */,
+				CE67134B1DC5EAEE00C2BA82 /* SZURayOvalLayer.swift in Sources */,
+				CE6713151DC3EB5300C2BA82 /* SZUAnimationsListViewController.swift in Sources */,
+				8D471DB41DC790BD009F20BD /* SZUFluidPageAnimationViewController.swift in Sources */,
+				CE6713451DC4194000C2BA82 /* SZURayAnimationView.swift in Sources */,
 				CE6713131DC3EB5300C2BA82 /* AppDelegate.swift in Sources */,
+				CE6713411DC4056A00C2BA82 /* SZUIconAnimationsViewController.swift in Sources */,
+				8D471DB71DC7923C009F20BD /* SZUFluidPageAnimationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +559,7 @@
 				CE6713391DC3EB5400C2BA82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE67133A1DC3EB5400C2BA82 /* Build configuration list for PBXNativeTarget "SZUAnimationsTests" */ = {
 			isa = XCConfigurationList;
@@ -511,6 +568,7 @@
 				CE67133C1DC3EB5400C2BA82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CE67133D1DC3EB5400C2BA82 /* Build configuration list for PBXNativeTarget "SZUAnimationsUITests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +577,7 @@
 				CE67133F1DC3EB5400C2BA82 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
