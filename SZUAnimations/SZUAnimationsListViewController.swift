@@ -10,7 +10,7 @@ import UIKit
 
 class SZUAnimationsListViewController: UITableViewController {
 
-    fileprivate let animations = ["Icons", "Fluid Page Control"]
+    fileprivate let animations = ["Icons", "Fluid Page Control", "Fluid Page Indicator"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +34,10 @@ class SZUAnimationsListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row == 0) {
             self.performSegue(withIdentifier: "toIconAnimations", sender: self)
-        } else {
+        } else if (indexPath.row == 1) {
             self.performSegue(withIdentifier: "toFluidPageAnimation", sender: self)
+        } else {
+            self.performSegue(withIdentifier: "toFluidPageIndicator", sender: self)
         }
     }
 }

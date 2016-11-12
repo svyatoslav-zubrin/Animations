@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hcK-pP-aU1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="hcK-pP-aU1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,11 +23,11 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PUf-5K-wjC" id="nQv-rn-isK">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="JRR-V2-z4B">
-                                            <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                                            <rect key="frame" x="15" y="0.0" width="345" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -46,6 +46,7 @@
                     <connections>
                         <segue destination="xgR-7B-eHw" kind="show" identifier="toIconAnimations" id="mc1-zZ-IOV"/>
                         <segue destination="CfY-Xg-3gd" kind="show" identifier="toFluidPageAnimation" id="GQa-zm-1Kn"/>
+                        <segue destination="4UB-uC-hbV" kind="show" identifier="toFluidPageIndicator" id="XTn-dh-gRL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VcC-A7-ukS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -139,6 +140,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCp-Cg-Lox" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1901" y="829"/>
+        </scene>
+        <!--Fluid Page Indicator-->
+        <scene sceneID="cJG-HV-E1A">
+            <objects>
+                <viewController id="4UB-uC-hbV" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oyv-cR-pBu"/>
+                        <viewControllerLayoutGuide type="bottom" id="GQR-SO-Um1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xiQ-Z2-e6d">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5hY-74-nlg" customClass="SZUFluidPageIndicatorView" customModule="SZUAnimations" customModuleProvider="target">
+                                <rect key="frame" x="66" y="104" width="243" height="52"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="YYd-Zw-nfW"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="dotsNumber">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="dotSize">
+                                        <real key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="dotDistance">
+                                        <real key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="markSize">
+                                        <real key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="dotColor">
+                                        <color key="value" red="1" green="1" blue="0.0" alpha="0.59647902397260277" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="markColor">
+                                        <color key="value" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6a-zi-MBe">
+                                <rect key="frame" x="102.5" y="192" width="50" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="FZL-s1-dDK"/>
+                                    <constraint firstAttribute="width" constant="50" id="WbH-lM-f2q"/>
+                                </constraints>
+                                <state key="normal" title="&lt;&lt;"/>
+                                <connections>
+                                    <action selector="onLeftWithSender:" destination="5hY-74-nlg" eventType="touchUpInside" id="XVf-La-2VO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BE5-C6-TO2">
+                                <rect key="frame" x="222.5" y="192" width="50" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="90o-nm-vag"/>
+                                    <constraint firstAttribute="height" constant="40" id="Dwf-n7-RuU"/>
+                                </constraints>
+                                <state key="normal" title="&gt;&gt;"/>
+                                <connections>
+                                    <action selector="onRightWithSender:" destination="5hY-74-nlg" eventType="touchUpInside" id="821-FH-Tlq"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="y6a-zi-MBe" firstAttribute="centerX" secondItem="xiQ-Z2-e6d" secondAttribute="centerX" constant="-60" id="7Xc-cY-Gi7"/>
+                            <constraint firstItem="5hY-74-nlg" firstAttribute="leading" secondItem="xiQ-Z2-e6d" secondAttribute="leadingMargin" constant="50" id="LKC-ze-XuH"/>
+                            <constraint firstItem="y6a-zi-MBe" firstAttribute="top" secondItem="5hY-74-nlg" secondAttribute="bottom" constant="36" id="NBf-pK-fLS"/>
+                            <constraint firstItem="BE5-C6-TO2" firstAttribute="top" secondItem="5hY-74-nlg" secondAttribute="bottom" constant="36" id="Qcv-PC-tWl"/>
+                            <constraint firstItem="BE5-C6-TO2" firstAttribute="centerX" secondItem="xiQ-Z2-e6d" secondAttribute="centerX" constant="60" id="ieL-hi-sV3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5hY-74-nlg" secondAttribute="trailing" constant="50" id="jJc-I7-i4p"/>
+                            <constraint firstItem="5hY-74-nlg" firstAttribute="top" secondItem="oyv-cR-pBu" secondAttribute="bottom" constant="40" id="n2C-13-SPM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Fluid Page Indicator" id="iAf-V9-rVd"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LgA-Jt-1OP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1900" y="1552.1739130434785"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4nK-TE-lxC">

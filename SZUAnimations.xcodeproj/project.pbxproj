@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63F01BA41DD6E27600A9C214 /* SZUFluidPageIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F01BA31DD6E27600A9C214 /* SZUFluidPageIndicatorView.swift */; };
+		63F01BA61DD6E3A300A9C214 /* SZUFluidPageIndicatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63F01BA51DD6E3A300A9C214 /* SZUFluidPageIndicatorViewController.swift */; };
 		8D471DB41DC790BD009F20BD /* SZUFluidPageAnimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D471DB31DC790BD009F20BD /* SZUFluidPageAnimationViewController.swift */; };
 		8D471DB71DC7923C009F20BD /* SZUFluidPageAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D471DB61DC7923C009F20BD /* SZUFluidPageAnimationView.swift */; };
 		CE6713131DC3EB5300C2BA82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6713121DC3EB5300C2BA82 /* AppDelegate.swift */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		63F01BA31DD6E27600A9C214 /* SZUFluidPageIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZUFluidPageIndicatorView.swift; sourceTree = "<group>"; };
+		63F01BA51DD6E3A300A9C214 /* SZUFluidPageIndicatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZUFluidPageIndicatorViewController.swift; sourceTree = "<group>"; };
 		8D471DB31DC790BD009F20BD /* SZUFluidPageAnimationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZUFluidPageAnimationViewController.swift; sourceTree = "<group>"; };
 		8D471DB61DC7923C009F20BD /* SZUFluidPageAnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZUFluidPageAnimationView.swift; sourceTree = "<group>"; };
 		CE67130F1DC3EB5300C2BA82 /* SZUAnimations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SZUAnimations.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,9 +90,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		631E72631DD74CE600C26AFC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				63F01BA51DD6E3A300A9C214 /* SZUFluidPageIndicatorViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		631E72641DD74CF000C26AFC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				63F01BA31DD6E27600A9C214 /* SZUFluidPageIndicatorView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		63F01BA21DD6E21800A9C214 /* Fluid Page 2 */ = {
+			isa = PBXGroup;
+			children = (
+				631E72631DD74CE600C26AFC /* Controller */,
+				631E72641DD74CF000C26AFC /* View */,
+			);
+			name = "Fluid Page 2";
+			sourceTree = "<group>";
+		};
 		8D471DB51DC7921D009F20BD /* Fluid Page */ = {
 			isa = PBXGroup;
 			children = (
+				8D471DB31DC790BD009F20BD /* SZUFluidPageAnimationViewController.swift */,
 				8D471DB61DC7923C009F20BD /* SZUFluidPageAnimationView.swift */,
 			);
 			name = "Fluid Page";
@@ -121,7 +151,6 @@
 				CE6713121DC3EB5300C2BA82 /* AppDelegate.swift */,
 				CE6713141DC3EB5300C2BA82 /* SZUAnimationsListViewController.swift */,
 				CE6713401DC4056A00C2BA82 /* SZUIconAnimationsViewController.swift */,
-				8D471DB31DC790BD009F20BD /* SZUFluidPageAnimationViewController.swift */,
 				CE6713161DC3EB5300C2BA82 /* Main.storyboard */,
 				CE6713191DC3EB5300C2BA82 /* Assets.xcassets */,
 				CE67131B1DC3EB5300C2BA82 /* LaunchScreen.storyboard */,
@@ -154,6 +183,7 @@
 				CE6713471DC41CD400C2BA82 /* SZUAnimationViewInterface.swift */,
 				CE6713431DC4188200C2BA82 /* Ray */,
 				8D471DB51DC7921D009F20BD /* Fluid Page */,
+				63F01BA21DD6E21800A9C214 /* Fluid Page 2 */,
 			);
 			name = Animations;
 			sourceTree = "<group>";
@@ -310,7 +340,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6713481DC41CD400C2BA82 /* SZUAnimationViewInterface.swift in Sources */,
+				63F01BA41DD6E27600A9C214 /* SZUFluidPageIndicatorView.swift in Sources */,
 				CE67134B1DC5EAEE00C2BA82 /* SZURayOvalLayer.swift in Sources */,
+				63F01BA61DD6E3A300A9C214 /* SZUFluidPageIndicatorViewController.swift in Sources */,
 				CE6713151DC3EB5300C2BA82 /* SZUAnimationsListViewController.swift in Sources */,
 				8D471DB41DC790BD009F20BD /* SZUFluidPageAnimationViewController.swift in Sources */,
 				CE6713451DC4194000C2BA82 /* SZURayAnimationView.swift in Sources */,

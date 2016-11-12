@@ -21,36 +21,17 @@ struct Circle {
     }
     
     func rect() -> CGRect {
-        return CGRect(x: center.x - radius,
-                      y: center.y - radius,
-                      width: 2.0 * radius,
-                      height: 2.0 * radius)
+        let retval = CGRect(x: center.x - radius,
+                            y: center.y - radius,
+                            width: 2.0 * radius,
+                            height: 2.0 * radius)
+        return retval
     }
 }
 
 // MARK: - Animation view -
 
 class SZUFluidPageAnimationView: UIView {
-    
-    enum SpurType {
-        case Linear, Quadratic
-    }
-    
-    private var _spurType: SpurType = .Linear
-    var spurType: SpurType {
-        get {
-            return _spurType
-        }
-        set {
-            guard _spurType != newValue else {
-                return
-            }
-            _spurType = newValue
-            state = nil // update state for new spur type
-            set(progress: progress) // will redraw the view
-        }
-    }
-    
     fileprivate var progress: CGFloat = 0.0
     fileprivate var state: SZUAnimationStateProtocol!
     
@@ -89,11 +70,11 @@ extension SZUFluidPageAnimationView: IFluidPageAnimation {
         if self.progress != progress || state == nil {
             self.progress = progress
             if self.progress >= 0 && self.progress <= 0.33 {
-                state = SZUFirstQuarterAnimationState(provider: self, spurType: spurType);
+                state = SZUFirstQuarterAnimationState(provider: self);
             } else if self.progress > 0.33 && self.progress <= 0.66 {
-                state = SZUSecondQuarterAnimationState(provider: self, spurType: spurType);
+                state = SZUSecondQuarterAnimationState(provider: self);
             } else if self.progress > 0.66 && self.progress <= 1.0 {
-                state = SZUThirdQuarterAnimationState(provider: self, spurType: spurType);
+                state = SZUThirdQuarterAnimationState(provider: self);
             }
 
             setNeedsDisplay()
@@ -107,7 +88,7 @@ extension SZUFluidPageAnimationView: SZUAnimationStateDataProvider {
     }
     
     func circleCenter(position: Circle.Position) -> CGPoint {
-        let unit = bounds.size.width / 4
+        let unit = bounds.size.width / 3
         switch position {
         case .Left:
             return CGPoint(x: unit, y: bounds.size.height / 2)
@@ -152,17 +133,13 @@ fileprivate protocol SZUAnimationStateProtocol  {
 
 fileprivate class SZUBaseAnimationState: SZUAnimationStateProtocol {
     var provider: SZUAnimationStateDataProvider!
-    var spurGenerator: ISpurGenerator = LinearSpurGenerator()
 
     var internalProgress: CGFloat = 0 // 0..1, specific for the particular anumation state
     var lCircle = Circle(center: CGPoint.zero, radius: 0.0)
     var rCircle = Circle(center: CGPoint.zero, radius: 0.0)
     
-    init(provider: SZUAnimationStateDataProvider, spurType: SZUFluidPageAnimationView.SpurType) {
+    init(provider: SZUAnimationStateDataProvider) {
         self.provider = provider
-        if spurType == .Quadratic {
-            self.spurGenerator = QuadraticSpurGenerator()
-        }
     }
     
     func calcInternalProgress(externalProgress: CGFloat) {
@@ -188,18 +165,19 @@ fileprivate class SZUFirstQuarterAnimationState: SZUBaseAnimationState {
         setupCircles()
         
         context.addEllipse(in: lCircle.rect())
-//        context.addEllipse(in: CGRect(x: xmin, y: lCircle.center.y, width: 5, height: 5))
         
-        let borders = (lBorder: CGPoint(x: lCircle.center.x, y:lCircle.radius),
-                       rBorder: CGPoint(x: rCircle.center.x, y:rCircle.radius))
-        let spurPoints = spurGenerator.spurPoints(borders: borders, minimaX: xmin, baseY: 0)
-        if spurPoints.count > 1 {
-            let spurPoints = spurPoints.map { CGPoint(x: $0.x, y: $0.y + lCircle.center.y) }
-            context.move(to: spurPoints[0])
-            for point in spurPoints {
-                context.addLine(to: point)
-            }
-        }
+        let initPoint = CGPoint(x: lCircle.center.x, y: lCircle.center.y - lCircle.radius)
+        let finlPoint = CGPoint(x: lCircle.center.x, y: lCircle.center.y + lCircle.radius)
+        let cntrlPoint = CGPoint(x: lCircle.center.x + (rCircle.center.x - lCircle.center.x) * internalProgress * 2.3,
+                                 y: lCircle.center.y)
+//        context.move(to: initPoint)
+//        context.addQuadCurve(to: finlPoint, control: cntrlPoint)
+        
+        let path = UIBezierPath()
+        path.move(to: initPoint)
+        path.addQuadCurve(to: finlPoint, controlPoint: cntrlPoint)
+        path.addLine(to: initPoint)
+        path.fill()
     }
     
     private func setupCircles() {
@@ -231,18 +209,26 @@ fileprivate class SZUSecondQuarterAnimationState: SZUBaseAnimationState {
         
         context.addEllipse(in: lCircle.rect())
         context.addEllipse(in: rCircle.rect())
-//        context.addEllipse(in: CGRect(x: xmin, y: lCircle.center.y, width: 5, height: 5))
-        
-        let borders = (lBorder: CGPoint(x: lCircle.center.x, y:lCircle.radius),
-                       rBorder: CGPoint(x: rCircle.center.x, y:rCircle.radius))
-        let spurPoints = spurGenerator.spurPoints(borders: borders, minimaX: xmin, baseY: 0)
-        if spurPoints.count > 1 {
-            let spurPoints = spurPoints.map { CGPoint(x: $0.x, y: $0.y + lCircle.center.y) }
-            context.move(to: spurPoints[0])
-            for point in spurPoints {
-                context.addLine(to: point)
-            }
-        }
+
+        var initPoint = CGPoint(x: lCircle.center.x, y: lCircle.center.y - lCircle.radius)
+        var finlPoint = CGPoint(x: lCircle.center.x, y: lCircle.center.y + lCircle.radius)
+        var cntrlPoint = CGPoint(x: lCircle.center.x + (rCircle.center.x - lCircle.center.x) * (1 - internalProgress) * 2.3,
+                                 y:rCircle.center.y)
+        let leftPath = UIBezierPath()
+        leftPath.move(to: initPoint)
+        leftPath.addQuadCurve(to: finlPoint, controlPoint: cntrlPoint)
+        leftPath.addLine(to: initPoint)
+        leftPath.fill()
+
+        initPoint = CGPoint(x: rCircle.center.x, y: rCircle.center.y - rCircle.radius)
+        finlPoint = CGPoint(x: rCircle.center.x, y: rCircle.center.y + rCircle.radius)
+        cntrlPoint = CGPoint(x: rCircle.center.x - (rCircle.center.x - lCircle.center.x) * internalProgress * 2.3,
+                             y:rCircle.center.y)
+        let rightPath = UIBezierPath()
+        rightPath.move(to: initPoint)
+        rightPath.addQuadCurve(to: finlPoint, controlPoint: cntrlPoint)
+        rightPath.addLine(to: initPoint)
+        rightPath.fill()
     }
     
     private func setupCircles() {
@@ -273,18 +259,16 @@ fileprivate class SZUThirdQuarterAnimationState: SZUBaseAnimationState {
         setupCircles()
         
         context.addEllipse(in: rCircle.rect())
-//        context.addEllipse(in: CGRect(x: xmin, y: lCircle.center.y, width: 5, height: 5))
         
-        let borders = (lBorder: CGPoint(x: lCircle.center.x, y:lCircle.radius),
-                       rBorder: CGPoint(x: rCircle.center.x, y:rCircle.radius))
-        let spurPoints = spurGenerator.spurPoints(borders: borders, minimaX: xmin, baseY: 0)
-        if spurPoints.count > 1 {
-            let spurPoints = spurPoints.map { CGPoint(x: $0.x, y: $0.y + lCircle.center.y) }
-            context.move(to: spurPoints[0])
-            for point in spurPoints {
-                context.addLine(to: point)
-            }
-        }
+        let initPoint = CGPoint(x: rCircle.center.x, y: rCircle.center.y + rCircle.radius)
+        let finlPoint = CGPoint(x: rCircle.center.x, y: rCircle.center.y - rCircle.radius)
+        let cntrlPoint = CGPoint(x: rCircle.center.x - (rCircle.center.x - lCircle.center.x) * (1 - internalProgress) * 2.3,
+                                 y: lCircle.center.y)
+        let path = UIBezierPath()
+        path.move(to: initPoint)
+        path.addQuadCurve(to: finlPoint, controlPoint: cntrlPoint)
+        path.addLine(to: initPoint)
+        path.fill()
     }
     
     private func setupCircles() {
@@ -302,48 +286,6 @@ fileprivate class SZUThirdQuarterAnimationState: SZUBaseAnimationState {
         let min = lCircle.rect().size.width + lCircle.rect().origin.x
         let max = rCircle.rect().origin.x
         return min + (max - min) * internalProgress
-    }
-}
-
-// MARK: - Spur generators -
-
-typealias SpurBorders = (lBorder: CGPoint, rBorder: CGPoint)
-
-protocol ISpurGenerator {
-    func spurPoints(borders: SpurBorders, minimaX: CGFloat, baseY: CGFloat) -> Array<CGPoint>
-}
-
-class LinearSpurGenerator: ISpurGenerator {
-    func spurPoints(borders: SpurBorders, minimaX: CGFloat, baseY: CGFloat = 0) -> Array<CGPoint> {
-        var retval: Array<CGPoint> = []
-        
-        if borders.lBorder.y != 0 {
-            retval.append(borders.lBorder)
-        }
-        
-        retval.append(CGPoint(x: minimaX, y: baseY))
-        
-        if borders.rBorder.y != 0 {
-            let rBorder = borders.rBorder
-            retval.append(rBorder)
-            retval.append(CGPoint(x: rBorder.x, y: -rBorder.y))
-            retval.append(CGPoint(x: minimaX, y: -baseY))
-        }
-        
-        if borders.lBorder.y != 0 {
-            let lBorder = borders.lBorder
-            retval.append(CGPoint(x: lBorder.x, y: -lBorder.y))
-            retval.append(lBorder)
-        }
-        
-        return retval
-    }
-}
-
-class QuadraticSpurGenerator: ISpurGenerator {
-    func spurPoints(borders: SpurBorders, minimaX: CGFloat, baseY: CGFloat) -> Array<CGPoint> {
-        // TODO: implementation needed
-        return []
     }
 }
 
